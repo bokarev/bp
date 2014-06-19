@@ -12,9 +12,9 @@ class Configuration extends CComponent {
 
 	public function init(){
 		$this->cachingTime = param('cachingTime', 5184000); // default caching for 60 days
-		if (oreInstall::isInstalled()) {
+		//if (oreInstall::isInstalled()) {
 			$this->loadConfig();
-		}
+		//}
 	}
 
 	private function loadConfig() {
