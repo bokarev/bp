@@ -63,11 +63,11 @@ if(demo()){
 if(demo()){
 	Yii::app()->clientScript->registerScript('login-js', '
 		function demoLogin(){
-			login("demore@monoray.net", "demo");
+			login("demore@4pr.net", "demo");
 		}
 
 		function adminLogin(){
-			login("adminre@monoray.net", "admin");
+			login("adminre@4pr.net", "admin");
 		}
 
 		function login(username, password){

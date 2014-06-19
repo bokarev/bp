@@ -185,7 +185,7 @@
 							array('label' => tc('Translations'), 'icon' => 'icon-wrench', 'url' => $baseUrl . '/translateMessage/backend/main/admin', 'active' => isActive('translateMessage')),
 
 //							array('label' => tc('Other')),
-//							array('label' => tc('News about Open Real Estate CMS'), 'icon' => 'icon-home', 'url' => $baseUrl . '/news/backend/main/product', 'active' => isActive('news.product')),
+//							array('label' => tc('News about bp.4pr CMS'), 'icon' => 'icon-home', 'url' => $baseUrl . '/news/backend/main/product', 'active' => isActive('news.product')),
 						),
 					));
 				} else {
@@ -256,7 +256,7 @@
 							array('label' => tc('Cities'), 'icon' => 'icon-globe', 'url' => $baseUrl . '/location/backend/city/admin', 'visible' => (issetModule('location') && param('useLocation', 1)), 'active' => isActive('location.city')),
 
 							array('label' => tc('Other')),
-							array('label' => tc('News about Open Real Estate CMS'), 'icon' => 'icon-home', 'url' => $baseUrl . '/news/backend/main/product', 'active' => isActive('news.product')),
+							array('label' => tc('News about bp.4pr CMS'), 'icon' => 'icon-home', 'url' => $baseUrl . '/news/backend/main/product', 'active' => isActive('news.product')),
 						),
 					));
 				}

@@ -1,18 +1,18 @@
 <?php
 /**********************************************************************************************
-*                            CMS Open Real Estate
+*                            CMS bp.4pr
 *                              -----------------
 *	version				:	1.8.2
-*	copyright			:	(c) 2014 Monoray
-*	website				:	http://www.monoray.ru/
-*	contact us			:	http://www.monoray.ru/contact
+*	copyright			:	(c) 2014 4pr
+*	website				:	http://www.4pr.ru/
+*	contact us			:	http://www.4pr.ru/contact
 *
-* This file is part of CMS Open Real Estate
+* This file is part of CMS bp.4pr
 *
-* Open Real Estate is free software. This work is licensed under a GNU GPL.
+* bp.4pr is free software. This work is licensed under a GNU GPL.
 * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 *
-* Open Real Estate is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+* bp.4pr is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
 * Without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 ***********************************************************************************************/
 
@@ -34,18 +34,18 @@ return array(
 	'Installation in 1 step' => 'Установка в один шаг',
 	'Database settings' => 'Настройки базы данных',
 	'Administrator settings' => 'Настройки администратора',
-	'Necessary parameters for the CMS Open Real Estate installation' => 'Необходимые параметры для установки CMS Open Real Estate',
+	'Necessary parameters for the CMS bp.4pr installation' => 'Необходимые параметры для установки CMS bp.4pr',
 	'Directory/file' => 'Директория/Файл',
 	'Comment' => 'Комментарий',
-	'Open Real Estate' => 'Open Real Estate',
+	'bp.4pr' => 'bp.4pr',
 	'License agreement' => 'Лицензионным соглашением',
-	'CMS Open Real Estate' => 'CMS Open Real Estate',
+	'CMS bp.4pr' => 'CMS bp.4pr',
 	'Value' => 'Значение',
 	'Result' => 'Результат',
 	'OK' => 'OK',
 	'Error' => 'Ошибка',
 	'Warning' => 'Предупреждение',
-	'CMS Open Real Estate is successfully installed!' => 'CMS Open Real Estate успешно установлена!',
+	'CMS bp.4pr is successfully installed!' => 'CMS bp.4pr успешно установлена!',
 	'Go to main page' => 'На главную',
 	'License_agreement_s' => 'Лицензионное соглашение',
 	'Accept' => 'Принять',
@@ -63,14 +63,14 @@ return array(
 - Автор не несет ответственности за причинение или возможность причинения вреда Пользователю, его информации или бизнесу вследствие использования или невозможности использования Продукта.<br/><br/>
 Полный текст лицензии находится <a href="https://docs.google.com/document/d/1j-QuyqRsKkcslbdAE7UQPzhaWc7QOO-CR4FbJuFkYWY/edit" target="_blank">здесь</a>',
 	'freeLicenseText' => '    <p>
-        GNU GPL <strong>CMS Open Real Estate</strong> распространяется бесплатно под общедоступной открытой лицензией GNU GPL второй редакции.
+        GNU GPL <strong>CMS bp.4pr</strong> распространяется бесплатно под общедоступной открытой лицензией GNU GPL второй редакции.
         <a href="http://www.gnu.org/licenses/old-licenses/gpl-2.0.html" rel="nofollow">Оригинальный текст лицензии</a> и <a href="http://www.internet-law.ru/law/pc/gnu.htm" rel="nofollow">Перевод лицензии с английского на русский</a>
     </p>
     <p>
-        Вы вольны распространять <strong>CMS Open Real Estate</strong> в любом виде, сохраняя авторские права и копирайты в коде системы (php файлы).
+        Вы вольны распространять <strong>CMS bp.4pr</strong> в любом виде, сохраняя авторские права и копирайты в коде системы (php файлы).
     </p>
     <p>Убрать активную ссылку на наш сайт в футере пользовательской и администраторской частях сайта вы можете только после оплаты в размере 1000 рублей.</p>
-	<p>Для этого <a href="http://monoray.ru/contact">напишите нам</a>, сообщив адрес домена для которого удаляются копирайты.</p>',
+	<p>Для этого <a href="http://4pr.ru/contact">напишите нам</a>, сообщив адрес домена для которого удаляются копирайты.</p>',
 	'Site language' => 'Язык сайта',
 	'Preferred site language' => 'Предпочитаемый язык сайта',
 	'Other settings' => 'Прочие настройки',

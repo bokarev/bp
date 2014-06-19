@@ -15,7 +15,7 @@
  */
  
  /**
- modified by Monoray <http://www.monoray.ru>
+ modified by 4pr <http://www.4pr.ru>
  **/
 
 

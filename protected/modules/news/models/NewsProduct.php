@@ -1,18 +1,18 @@
 <?php
 /**********************************************************************************************
- *                            CMS Open Real Estate
+ *                            CMS bp.4pr
  *                              -----------------
  *    version                :    1.8.2
- *    copyright            :    (c) 2014 Monoray
- *    website                :    http://www.monoray.ru/
- *    contact us            :    http://www.monoray.ru/contact
+ *    copyright            :    (c) 2014 4pr
+ *    website                :    http://www.4pr.ru/
+ *    contact us            :    http://www.4pr.ru/contact
  *
- * This file is part of CMS Open Real Estate
+ * This file is part of CMS bp.4pr
  *
- * Open Real Estate is free software. This work is licensed under a GNU GPL.
+ * bp.4pr is free software. This work is licensed under a GNU GPL.
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  *
- * Open Real Estate is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ * bp.4pr is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
  * Without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  ***********************************************************************************************/
 
@@ -30,8 +30,8 @@
 class NewsProduct extends CActiveRecord
 {
 
-    const RSS_PRODUCT_EN = 'http://monoray.net/83-open-real-estate?format=feed&type=rss';
-	const RSS_PRODUCT_RU = 'http://monoray.ru/83-open-real-estate?format=feed&type=rss';
+    const RSS_PRODUCT_EN = 'http://4pr.net/83-open-real-estate?format=feed&type=rss';
+	const RSS_PRODUCT_RU = 'http://4pr.ru/83-open-real-estate?format=feed&type=rss';
 
 	/**
 	 * Returns the static model of the specified AR class.
@@ -158,7 +158,7 @@ class NewsProduct extends CActiveRecord
 						->bindValue(':description', (string) $news->description, PDO::PARAM_STR)
 						->bindValue(':link', $link, PDO::PARAM_STR)
 						->bindValue(':pubDate', $pubDate, PDO::PARAM_STR)
-						->bindValue(':author', 'MonoRay.ru', PDO::PARAM_STR)
+						->bindValue(':author', '4pr.ru', PDO::PARAM_STR)
 						->bindValue(':lang', $lang, PDO::PARAM_STR)
 						->execute();
 			}

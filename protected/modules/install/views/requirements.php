@@ -1,4 +1,4 @@
-<h2><?php echo tFile::getT('module_install', 'Necessary parameters for the CMS Open Real Estate installation');?></h2>
+<h2><?php echo tFile::getT('module_install', 'Necessary parameters for the CMS bp.4pr installation');?></h2>
 <table class="result">
     <tr>
         <th><?php echo tFile::getT('module_install', 'Value'); ?></th>

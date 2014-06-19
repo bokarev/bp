@@ -14,7 +14,7 @@
 	<link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/favicon.ico" type="image/x-icon" />
 	<link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/favicon.ico" type="image/x-icon" />
 
-	<title><?php echo tFile::getT('module_install', 'Open Real Estate').' - '.tFile::getT('module_install', 'Installation in 1 step'); ?></title>
+	<title><?php echo tFile::getT('module_install', 'bp.4pr').' - '.tFile::getT('module_install', 'Installation in 1 step'); ?></title>
 
     <style type="text/css">
         body {background: white; font-family: 'Lucida Grande', Verdana, Geneva, Lucida, Helvetica, Arial, sans-serif; font-size: 10pt; font-weight: normal; }
@@ -44,7 +44,7 @@
 	<div id="container">
 		<div class="logo">
 			<a title="<?php echo tFile::getT('module_install', 'Go to main page'); ?>" href="<?php echo Yii::app()->request->baseUrl; ?>/">
-				<img width="259" height="50" alt="<?php echo tFile::getT('module_install', 'Open Real Estate'); ?>"
+				<img width="259" height="50" alt="<?php echo tFile::getT('module_install', 'bp.4pr'); ?>"
 					 src="<?php echo Yii::app()->request->baseUrl; ?>/images/pages/logo-open-ore.png" id="logo" />
 			</a>
 		</div>

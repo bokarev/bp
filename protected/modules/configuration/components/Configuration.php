@@ -1,8 +1,8 @@
 <?php
 /**********************************************************************************************
-*	copyright			:	(c) 2014 Monoray
-*	website				:	http://www.monoray.ru/
-*	contact us			:	http://www.monoray.ru/contact
+*	copyright			:	(c) 2014 4pr
+*	website				:	http://www.4pr.ru/
+*	contact us			:	http://www.4pr.ru/contact
 ***********************************************************************************************/
 
 class Configuration extends CComponent {
