@@ -90,19 +90,24 @@ class Apartment extends ParentModel {
 			//array('price', 'required'),
 			//array('price ', 'numerical', 'min' => 1),
 			array('price', 'priceValidator', 'except'=>'video_file, video_html, panorama'),
-			array('title', 'i18nRequired', 'except'=>'video_file, video_html, panorama'),
-			array('price, price_to, floor, floor_total, window_to, type, price_type, obj_type_id, city_id, activity_always', 'numerical', 'integerOnly' => true),
+                        array('title', 'i18nRequired', 'except'=>'video_file, video_html, panorama'),
+			array('price, price_to, price_high, floor, floor_total, window_to, type, price_type, obj_type_id, city_id, activity_always', 'numerical', 'integerOnly' => true),
 			array('square, land_square', 'numerical'),
 			array('type', 'numerical', 'min' => 1),
 			array('price_to', 'priceToValidator'),
+                        array('price_high', 'priceToValidator'),
 			array('berths', 'length', 'max' => 255),
 			array('title', 'i18nLength', 'max' => 255),
+                        array('map_description', 'i18nLength', 'max' => 5000),  
+                        array('pool', 'i18nLength', 'max' => 5000), 
+                        array('facilities', 'i18nLength', 'max' => 5000),
+                        array('villascomplex', 'i18nLength', 'max' => 5000),
 			array('lat, lng', 'length', 'max' => 25),
 			array('phone', 'length', 'max' => 15),
 			array('id', 'safe', 'on' => 'search'),
 			array('floor', 'myFloorValidator'),
 			array('is_price_poa', 'boolean'),
-			array('in_currency, owner_active, num_of_rooms, is_special_offer, is_free_from, is_free_to, active, metroStations, note, period_activity', 'safe'),
+			array('in_currency, owner_active, num_of_rooms, num_of_pools, is_special_offer, is_free_from, is_free_to, active, metroStations, note, period_activity', 'safe'),
 			array($this->getI18nFieldSafe(), 'safe'),
 			array('city_id, owner_active, active, type, obj_type_id, ownerEmail, ownerUsername', 'safe', 'on' => 'search'),
 
@@ -161,7 +166,7 @@ class Apartment extends ParentModel {
 
 	public function priceValidator($attribute, $params){
 		if(!$this->is_price_poa){
-			if(!$this->price && !$this->price_to){
+			if(!$this->price && !$this->price_to && !$this->price_high){
 				$this->addError('price', Yii::t('common', '{label} cannot be blank.', array('{label}' => $this->getAttributeLabel($attribute))));
 			}
 		}
@@ -169,7 +174,7 @@ class Apartment extends ParentModel {
 
 	public function priceToValidator(){
 		if($this->price_to && $this->price){
-			if($this->price_to < $this->price){
+			if($this->price_to < $this->price or $this->price_to < $this->price_high or $this->price_high < $this->price){
 				$this->addError('price', tt('priceToValidatorText', 'apartments'));
 			}
 		}
@@ -180,6 +185,10 @@ class Apartment extends ParentModel {
 			'title' => 'text not null',
 			'address' => 'varchar(255) not null',
 			'description' => 'text not null',
+                        'map_description' => 'text not null',
+                        'pool' => 'text not null',
+                        'facilities' => 'text not null',
+                        'villascomplex' => 'text not null',
 			'description_near' => 'text not null',
 			'exchange_to' => 'text not null'
 		);
@@ -193,7 +202,7 @@ class Apartment extends ParentModel {
 	}
 
     public function currencyFields(){
-        return array('price', 'price_to');
+        return array('price', 'price_to', 'price_high');
     }
 
 	public function myFloorValidator($attribute,$params){
@@ -304,6 +313,7 @@ class Apartment extends ParentModel {
 			'type' => tt('Type', 'apartments'),
 			'price' => tt('Price', 'apartments'),
 			'num_of_rooms' => tt('Number of rooms', 'apartments'),
+                        'num_of_pools' => tt('Number of pools', 'apartments'),
 			'floor' => tt('Floor', 'apartments'),
 			'floor_total' => tt('Total number of floors', 'apartments'),
             'floor_all' => tt('Floor', 'apartments').'/'.tt('Total number of floors', 'apartments'),
@@ -311,6 +321,10 @@ class Apartment extends ParentModel {
 			'land_square' => tt('Land square', 'apartments'),
 			'window_to' => tt('Window to', 'apartments'),
 			'title' => tt('Apartment title', 'apartments'),
+                        'map_description' => tt('Map Description', 'apartments'),                   
+                        'pool' => tt('pool', 'apartments'),                   
+                        'facilities' => tt('facilities', 'apartments'),
+                        'villascomplex' => tt('villascomplex', 'apartments'),
 			'description' => tt('Description', 'apartments'),
 			'description_near' => tt('What is near?', 'apartments'),
 			'metro_station' => tt('Metro station', 'apartments'),
@@ -392,26 +406,33 @@ class Apartment extends ParentModel {
 			'criteria' => $criteria,
 			//'sort'=>array('defaultOrder'=>'sorter'),
 			'pagination'=>array(
-				'pageSize'=>param('adminPaginationPageSize', 20),
+                        'pageSize'=>param('adminPaginationPageSize', 20),
 			),
 		));
 	}
 
 	public function getPriceFrom(){
-		if(isFree()){
+		if(true){
 			return $this->price;
 		}
-	    return round(Currency::convertFromDefault($this->price), param('round_price', 2));
+	//    return round(Currency::convertFromDefault($this->price), param('round_price', 2));
 	}
 	public function getPriceTo(){
-		if(isFree()){
+		if(true){
 			return $this->price_to;
 		}
-	    return round(Currency::convertFromDefault($this->price_to), param('round_price', 2));
+	//    return round(Currency::convertFromDefault($this->price_to), param('round_price', 2));
+	}
+        
+        public function getPriceHigh(){
+		if(true){
+			return $this->price_high;
+		}
+	//    return round(Currency::convertFromDefault($this->price_to), param('round_price', 2));
 	}
 
 	public function getCurrency(){
-		if(isFree()){
+		if(true){//isFree()
 			return param('siteCurrency', '$');
 		}else{
 			return Currency::getCurrentCurrencyName();
@@ -538,11 +559,11 @@ class Apartment extends ParentModel {
     }
 
     public function afterFind(){
-		if(!isFree()){
-        	$this->in_currency = Currency::getDefaultCurrencyModel()->char_code;
-		} else {
+//		if(!isFree()){
+//        	$this->in_currency = Currency::getDefaultCurrencyModel()->char_code;
+//		} else {
 			$this->in_currency = param('siteCurrency', '$');
-		}
+//		}
 
         if($this->activity_always){
             $this->period_activity = 'always';
@@ -615,7 +636,7 @@ class Apartment extends ParentModel {
             }
 		}
 
-		if(!isFree()){
+		if(false){
 			$defaultCurrencyCharCode = Currency::getDefaultCurrencyModel()->char_code;
 
 			if($defaultCurrencyCharCode != $this->in_currency){
@@ -858,20 +879,20 @@ class Apartment extends ParentModel {
         }
 
 		if (param('useTypeRent', 1)) {
-			$types[self::TYPE_RENT] = tt('Rent', 'apartments');
+			$types[self::TYPE_RENT] = tc('Holiday villas', 'apartments');
 		}
 		if (param('useTypeSale', 1)) {
-			$types[self::TYPE_SALE] = tt('Sale', 'apartments');
+			$types[self::TYPE_SALE] = tc('Long-term villas', 'apartments');
 		}
 		if (param('useTypeRenting', 1)) {
-			$types[self::TYPE_RENTING] = tt('Rent a', 'apartments');
+			$types[self::TYPE_RENTING] = tc('Land for sale', 'apartments');
 		}
 		if (param('useTypeBuy', 1)) {
-			$types[self::TYPE_BUY] = tt('Buy a', 'apartments');
+			$types[self::TYPE_BUY] = tc('Villas for sale', 'apartments');
 		}
-		if (param('useTypeChange', 1)) {
-			$types[self::TYPE_CHANGE] = tt('Exchange', 'apartments');
-		}
+//		if (param('useTypeChange', 1)) {
+//			$types[self::TYPE_CHANGE] = tt('Exchange', 'apartments');
+//		}
         return $types;
     }
 
@@ -1110,6 +1131,23 @@ class Apartment extends ParentModel {
 
     public function getDescription() {
         return $this->getStrByLang('description');
+    }
+    
+    public function getPool() {
+        return $this->getStrByLang('pool');
+    }
+    
+    public function getVillascomplex() {
+        return $this->getStrByLang('villascomplex');
+    }
+          
+    public function getFacilities() {
+        return $this->getStrByLang('facilities');
+    }
+    
+    
+    public function getMap_Description() {
+        return $this->getStrByLang('map_description');
     }
 
     public function getDescription_Near() {

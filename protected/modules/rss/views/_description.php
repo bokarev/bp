@@ -19,6 +19,11 @@
 					echo Yii::t('module_apartments',
 						'{n} bedroom|{n} bedrooms|{n} bedrooms', array($item->num_of_rooms));
 				}
+                                if ($item->num_of_pools){
+					echo ',&nbsp;';
+					echo Yii::t('module_apartments',
+						'{n} pool|{n} pools|{n} pools', array($item->num_of_pools));
+				}
 				if(isset($item->city) && isset($item->city->name)){
 					echo ',&nbsp;';
 					echo $item->city->name;

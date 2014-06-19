@@ -1,4 +1,4 @@
-<div class="<?php echo $divClass; ?>">
+<!--<div class="<?php echo $divClass; ?>">
     <?php
     if (issetModule('selecttoslider') && param('useFloorSlider') == 1) {
     ?>
@@ -42,4 +42,4 @@
     ', CClientScript::POS_READY);
         }
         ?>
-</div>
+</div>-->

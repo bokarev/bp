@@ -47,9 +47,9 @@ if ($data->canShowInView('berths') && $data->berths) {
 if ($data->canShowInView('window_to') && $data->windowTo->getTitle()) {
     echo '<dt>' . tt('window to') . ':</dt><dd>' . CHtml::encode($data->windowTo->getTitle()) . '</dd>';
 }
-
+  
 if ($data->canShowInView('description')) {
-    echo '<dt>' . tt('Description') . ':</dt><dd>' . CHtml::encode($data->getStrByLang('description')) . '</dd>';
+    echo '<dt>' . tt('Description') . ':</dt><dd>' . $data->getStrByLang('description') . '</dd>';
 }
 
 if ($data->canShowInView('description_near')) {

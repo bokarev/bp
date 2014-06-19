@@ -4,12 +4,12 @@
 $yii=dirname(__FILE__).'/framework/yii.php';
 $config=dirname(__FILE__).'/protected/config/main-free.php';
 
-define('ORE_VERSION_NAME', 'Open Real Estate FREE');
-define('ORE_VERSION', '1.8.2');
+define('ORE_VERSION_NAME', '<a href="http://4pr.ru" target=_blank>4pr.ru</a>');
+define('ORE_VERSION', '1.1.2');
 
 define('ROOT_PATH', dirname(__FILE__));
 
-define('IS_FREE', true);
+define('IS_FREE', false);
 
 // remove the following lines when in production mode
 //defined('YII_DEBUG') or define('YII_DEBUG',true);
@@ -20,4 +20,11 @@ define('ALREADY_INSTALL_FILE', ROOT_PATH . DIRECTORY_SEPARATOR . 'protected' . D
                                 . 'runtime' . DIRECTORY_SEPARATOR . 'already_install');
 
 require_once($yii);
+
+//$is_cookie = !isset(Yii::app()->request->cookies['cookie_name']->value);
 Yii::createWebApplication($config)->run();
+//$cookie = new CHttpCookie('_lang2', 'ru');
+//$cookie->expire = time()+60*60*24*180; 
+//Yii::app()->request->cookies['_lang2'] = $cookie;
+
+//$cookie = new CHttpCookie('_lang', 'ru');

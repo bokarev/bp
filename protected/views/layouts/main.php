@@ -92,15 +92,16 @@ $baseUrl = Yii::app()->baseUrl;
 				<img width="259" height="50" alt="<?php echo CHtml::encode($this->pageDescription); ?>" src="<?php echo $baseUrl; ?>/images/pages/logo-open-ore.png" id="logo" />
 			</a>
 		</div>
+                
 
 		<?php
-		if(!isFree()){
+		if(true){ //langs
 			if(count(Lang::getActiveLangs()) > 1){
 				$this->widget('application.modules.lang.components.langSelectorWidget', array( 'type' => 'links' ));
 			}
-			if(count(Currency::getActiveCurrency()) >1){
-				$this->widget('application.modules.currency.components.currencySelectorWidget');
-			}
+//			if(count(Currency::getActiveCurrency()) >1){
+//				$this->widget('application.modules.currency.components.currencySelectorWidget');
+//			}
 		}
 		?>
 
@@ -127,16 +128,16 @@ $baseUrl = Yii::app()->baseUrl;
 		?>
 			<div id="search" class="menu_item">
 				<?php
-				if (param('useYandexShare', 0))
-					$this->widget('application.extensions.YandexShareApi', array(
-						'services' => param('yaShareServices', 'yazakladki,moikrug,linkedin,vkontakte,facebook,twitter,odnoklassniki')
-					));
+//				if (param('useYandexShare', 0))
+//					$this->widget('application.extensions.YandexShareApi', array(
+//						'services' => param('yaShareServices', 'yazakladki,moikrug,linkedin,vkontakte,facebook,twitter,odnoklassniki')
+//					));
 				if (param('useInternalShare', 1))
 					$this->widget('ext.sharebox.EShareBox', array(
 						'url' => Yii::app()->getRequest()->getHostInfo().Yii::app()->request->url,
 						'title'=> CHtml::encode($this->seoTitle ? $this->seoTitle : $this->pageTitle),
 						'iconSize' => 16,
-						'include' => explode(',', param('intenalServices', 'vk,facebook,twitter,google-plus,stumbleupon,digg,delicious,linkedin,reddit,technorati,newsvine')),
+						'include' => explode(',', param('intenalServices', 'facebook,vk,twitter,google-plus')),
 					));
 
 					/*$this->widget('zii.widgets.CMenu',array(

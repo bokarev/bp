@@ -1,29 +1,11 @@
 <?php
-/**********************************************************************************************
-*                            CMS Open Real Estate
-*                              -----------------
-*	version				:	1.8.2
-*	copyright			:	(c) 2014 Monoray
-*	website				:	http://www.monoray.ru/
-*	contact us			:	http://www.monoray.ru/contact
-*
-* This file is part of CMS Open Real Estate
-*
-* Open Real Estate is free software. This work is licensed under a GNU GPL.
-* http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
-*
-* Open Real Estate is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
-* Without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-***********************************************************************************************/
-
 class MainController extends ModuleAdminController {
 
 	public $modelName = 'Apartment';
-        public $type = 0;
+        //public $type = 0;
 
 	public function actionView($id = 0) {
 		//$this->layout='//layouts/inner';
-
 		Yii::app()->bootstrap->plugins['tooltip'] = array(
 			'selector'=>' ', // bind the plugin tooltip to anchor tags with the 'tooltip' class
 			'options'=>array(
@@ -34,6 +16,8 @@ class MainController extends ModuleAdminController {
 		$model = $this->loadModelWith(array('windowTo', 'objType', 'city'));
 
 		if (!in_array($model->type, Apartment::availableApTypesIds())) {
+                    var_dump($model); die();
+//TODO_BP : [backend] die - model type = 0                    
 			throw404();
 		}
 
@@ -64,25 +48,28 @@ class MainController extends ModuleAdminController {
 
         
 	public function actionUpdate($id){
-        $this->_model = $this->loadModel($id);
-
-
-        if(!$this->_model){
+//            my_debug($_POST['Apartment']);
+//            my_debug('-->' . $id . '<--');
+            $this->_model = $this->loadModel($id);
+            if(!$this->_model){
             throw404();
-        }
+            }
 
         $oldStatus = $this->_model->active;
+        //TODO_BP : костыль title_en 
+        //$this->_model->title_en = $_POST['Apartment']['title_en'];
 
         if(issetModule('bookingcalendar')) {
 			$this->_model = $this->_model->with(array('bookingCalendar'));
 		}
-        if(isset($_GET['type'])){
-            $type = self::getReqType();
-
-            $this->type = self::getReqType();
-        }
-        $this->_model->type = $type;
+//        if(isset($_GET['type'])){
+//            $type = self::getReqType();
+//
+//            $this->type = self::getReqType();
+//        }
+//        $this->_model->type = $type;
 		if(isset($_POST[$this->modelName])){
+                    
 			$this->_model->attributes = $_POST[$this->modelName];
 
 			if ($this->_model->type != Apartment::TYPE_BUY && $this->_model->type != Apartment::TYPE_RENTING) {
@@ -177,7 +164,7 @@ class MainController extends ModuleAdminController {
 		}
 
         $this->_model->getCategoriesForUpdate();
-
+   //TODO_BP : [debug] $this->_model->title_en - empty
         if($this->_model->active == Apartment::STATUS_DRAFT){
 			Yii::app()->user->setState('menu_active', 'apartments.create');
 			$this->render('create', array(
@@ -187,6 +174,8 @@ class MainController extends ModuleAdminController {
 			));
 			return;
 		}
+;
+
 
 		$this->render('update', array(
 			'model' => $this->_model,

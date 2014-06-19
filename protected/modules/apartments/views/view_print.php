@@ -65,7 +65,7 @@ if ($model->is_special_offer) {
 				echo '<strong>' . tt('Type', 'apartments') . '</strong>: ' . Apartment::getNameByType($model->type);
 				echo '</div>';
 				?>
-				<?php if (param('useShowUserInfo')) {
+				<?php if (false) { //param('useShowUserInfo')
 					if (isset($model->user->phone) && $model->user->phone) {
 						echo '<div>';
 						echo '<strong>' . tt('Owner phone', 'apartments') . '</strong>: <img src="' . Yii::app()->controller->createUrl('/apartments/main/generatephone', array('id' => $model->id, 'width' => 180)) . '" style="vertical-align: text-top;"/>';
@@ -95,7 +95,11 @@ if ($model->is_special_offer) {
 					echo Yii::t('module_apartments',
 						'{n} bedroom|{n} bedrooms|{n} bedrooms', array($model->num_of_rooms));
 				}
-
+                                if ($model->num_of_pools) {
+					echo ',&nbsp;';
+					echo Yii::t('module_apartments',
+						'{n} pool|{n} bpools|{n} pools', array($model->num_of_pools));
+				}
 
 				if (issetModule('location') && param('useLocation', 1)) {
 					if ($model->locCountry || $model->locRegion || $model->locCity) {
@@ -154,9 +158,11 @@ if ($model->is_special_offer) {
 				echo '<div>';
 				if ($model->is_price_poa) {
 					echo '<strong>' . tt('is_price_poa', 'apartments') . '</strong>';
-				} else {
-					echo '<strong>' . tt('Price from', 'apartments') . '</strong>: ' . $model->getPrettyPrice();
-				}
+				} else {        echo tt('Price from') . ': ' . '<br />';
+						echo tc('Low Season') . ': ' . $model->price  . ' $/' . tc('day')  . '<br />';
+                                                echo tc('High Season') . ': ' . $model->price_high  . ' $/' . tc('day')  . '<br />';
+                                                echo tc('Peak Season') . ': ' . $model->price_to  . ' $/' . tc('day')  . '<br />';
+                                        }
 				echo '</div>';
 				?>
 			</td>
@@ -201,15 +207,15 @@ if ($images) {
 	<?php
 	if ($model->canShowInView('description')) {
 		echo '<div>';
-		echo '<strong>' . tt('Description', 'apartments') . '</strong>: ' . CHtml::encode($model->getStrByLang('description'));
+		echo '<strong>' . tt('Description', 'apartments') . '</strong>: ' . $model->getStrByLang('description');
 		echo '</div>';
 	}
 
 	if ($model->canShowInView('description_near')) {
 		echo '<div>';
-		echo '<strong>' . tt('Near', 'apartments') . '</strong>: ' . CHtml::encode($model->getStrByLang('description_near'));
+		echo '<strong>' . tt('What is near?', 'apartments') . '</strong>: ' . CHtml::encode($model->getStrByLang('description_near'));
 		echo '</div>';
-	}
+	}  
 
 	if ($model->getStrByLang('address')) {
 

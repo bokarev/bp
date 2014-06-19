@@ -48,6 +48,7 @@
 					 src="<?php echo Yii::app()->request->baseUrl; ?>/images/pages/logo-open-ore.png" id="logo" />
 			</a>
 		</div>
+            
         <?php
 			if(!isFree() && Yii::app()->controller->action->id != 'index'){
 				$this->widget('application.modules.lang.components.langSelectorWidget', array(
@@ -77,9 +78,6 @@
 			<div class="clear"></div>
 		</div>
 
-		<div class="footer">
-			<p class="slogan">&copy;&nbsp;<?php echo tFile::getT('module_install', 'Open Real Estate').', '.date('Y'); ?></p>
-		</div>
     </div>
 </body>
 </html>

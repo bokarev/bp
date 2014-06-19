@@ -64,20 +64,15 @@ class EShareBox extends CWidget
 	 * @var array Definitions for sharing services.
 	 */
 	protected $shareDefinitions = array(
+                'facebook' => array(
+			'url' => 'https://www.facebook.com/sharer.php?u={url}&t={title}',
+			'title' => 'Share this on Facebook',
+			'name' => 'Facebook'
+		),
 		'vk' => array(
 			'url' => 'http://vk.com/share.php?url={url}&title={title}',
 			'title' => 'Share this on VK.com',
 			'name' => 'VK.com'
-		),
-		'odnoklassniki' => array(
-			'url' => 'http://www.odnoklassniki.ru/dk?st.cmd=addShare&st.s=1&st.comments={title}&st._surl={url}',
-			'title' => 'Share this on Odnoklassniki',
-			'name' => 'Odnoklassniki'
-		),
-		'facebook' => array(
-			'url' => 'https://www.facebook.com/sharer.php?u={url}&t={title}',
-			'title' => 'Share this on Facebook',
-			'name' => 'Facebook'
 		),
 		'twitter' => array(
 			'url' => 'http://twitter.com/intent/tweet?url={url}&text={title}',
@@ -89,41 +84,8 @@ class EShareBox extends CWidget
 			'title' => 'Share this on Google+',
 			'name' => 'Google+'
 		),
-		'stumbleupon' => array(
-			'url' => 'http://www.stumbleupon.com/submit?url={url}&title={title}',
-			'title' => 'Stumble upon something good? Share it on StumbleUpon',
-			'name' => 'StumbleUpon'
-		),
-		'digg' => array(
-			'url' => 'http://digg.com/submit?phase=2&url={url}&title={title}',
-			'title' => 'Digg this!',
-			'name' => 'Digg',
-		),
-		'delicious' => array(
-			'url' => 'http://delicious.com/post?url={url}&title={title}',
-			'title' => 'Share this on del.icio.us',
-			'name' => 'Delicious',
-		),
-		'linkedin' => array(
-			'url' => 'http://www.linkedin.com/shareArticle?mini=true&url={url}&title={title}',
-			'title' => 'Share this on LinkedIn',
-			'name' => 'LinkedIn',
-		),
-		'reddit' => array(
-			'url' => 'http://reddit.com/submit?url={url}&title={title}',
-			'title' => 'Share this on Reddit',
-			'name' => 'Reddit',
-		),
-		'technorati' => array(
-			'url' => 'http://technorati.com/faves?add={url}',
-			'title' => 'Share this on Technorati',
-			'name' => 'Technorati',
-		),
-		'newsvine' => array(
-			'url' => 'http://www.newsvine.com/_tools/seed&save?u={url}',
-			'title' => 'Bookmark on Newsvine',
-			'name' => 'Newsvine',
-		),
+
+
 			/*
 			  'email' => array(
 			  'url' => 'http://mysite.com/sendEmail?url={url}&title={title}',

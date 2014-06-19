@@ -21,7 +21,9 @@ $this->adminTitle = tt('Update apartment');
 			',CClientScript::POS_READY
 		);*/
 	}
-echo $model->type . "--------";
+        my_debug(' --- ooo --->>>') ;
+        my_debug($model->title_en) ; my_debug($model->title_ru) ;
+        my_debug(' <<<--- ooo ---') ;
 	$this->renderPartial('_form',array(
 			'model'=>$model,
 			'supportvideoext' => $supportvideoext,

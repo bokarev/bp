@@ -27,7 +27,7 @@
 		?>
 
         <?php
-        if(param('useShowUserInfo')){
+        if(false){//param('useShowUserInfo')
             echo '<div class="apartment-user-info'.($data->is_special_offer ? ' top50' : '').'">';
             $this->widget('zii.widgets.jui.CJuiTabs', array(
                 'tabs' => array(tc('Listing provided by') => $this->renderPartial('//../modules/apartments/views/_user_info', array('data' => $data), true)),
@@ -65,10 +65,15 @@
 						echo Yii::t('module_apartments',
 							'{n} bedroom|{n} bedrooms|{n} bedrooms near {metro} metro station', array($data->num_of_rooms, '{metro}' => $data->stationsTitle()));
 					}
-					elseif ($data->num_of_rooms){
+					if ($data->num_of_rooms){
 						echo ',&nbsp;';
 						echo Yii::t('module_apartments',
 							'{n} bedroom|{n} bedrooms|{n} bedrooms', array($data->num_of_rooms));
+					}
+                                        if ($data->num_of_pools){
+						echo ',&nbsp;';
+						echo Yii::t('module_apartments',
+							'{n} pool|{n} pools|{n} pools', array($data->num_of_pools));
 					}
 				if (issetModule('location') && param('useLocation', 1)) {
 					if($data->locCountry || $data->locRegion || $data->locCity)
@@ -98,11 +103,14 @@
 				</strong>
 			</div>
 
-			<p class="cost padding-bottom10">
+			<p class="cost padding-bottom10 ap-descr">
 				<?php if ($data->is_price_poa)
 						echo tt('is_price_poa', 'apartments');
-					else
-						echo tt('Price from').': '.$data->getPrettyPrice();
+					else {  echo tt('Price from') . ': ' . '<br />';
+						echo tc('Low Season') . ': ' . $data->price  . ' $/' . tc('day')  . '<br />';
+                                                echo tc('High Season') . ': ' . $data->price_high  . ' $/' . tc('day')  . '<br />';
+                                                echo tc('Peak Season') . ': ' . $data->price_to  . ' $/' . tc('day')  . '<br />';
+                                        }
 				?>
 			</p>
 			<div class="overflow-auto">

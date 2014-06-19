@@ -40,7 +40,7 @@
 	</div>
 
 	<div class="footer">
-		<?php echo getGA(); ?>
+		<?php //echo getGA(); ?>
 		<p class="slogan">&copy;&nbsp;<?php echo CHtml::encode(Yii::app()->name).', '.date('Y'); ?></p>
 		<!-- <?php echo ORE_VERSION_NAME . ' ' . ORE_VERSION; ?> -->
 	</div>

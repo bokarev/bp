@@ -84,6 +84,7 @@ foreach ($apartments as $item) {
 				<div class="clear"></div>
 				<p class="cost">
 					<?php
+                                        if($item->is_special_offer) echo $item->note . '<br />';  
 						if ($item->is_price_poa)
 							echo tt('is_price_poa', 'apartments');
 						else

@@ -38,7 +38,7 @@ class Lang extends ParentModel
 
 	const FLAG_DIR = '/images/flags/';
 
-	private static $apartmentIndexedFields = array('title', 'description', 'description_near', 'address');
+	private static $apartmentIndexedFields = array('title', 'pool', 'description', 'map_description', 'description_near', 'address');
 
     /**
      * Returns the static model of the specified AR class.

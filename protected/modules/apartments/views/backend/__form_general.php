@@ -1,9 +1,9 @@
 <div class="tab-pane active" id="tab-main">
-<div class="rowold">
+<!--<div class="rowold">
     <?php echo $form->labelEx($model, 'type'); ?>
     <?php echo $form->dropDownList($model, 'type', Apartment::getTypesArray(), array('class' => 'width240', 'id' => 'ap_type')); ?>
     <?php echo $form->error($model, 'type'); ?>
-</div>
+</div>-->
 
 <div class="rowold">
     <?php echo $form->labelEx($model, 'obj_type_id'); ?>
@@ -118,14 +118,15 @@ if ($model->canShowInForm('address')) {
     <div id="price_fields">
         <?php
         echo CHtml::hiddenField('is_update', 0);
-
+// TODO_BP : [backend] price_fields $model->isPriceFromTo()
 //        if (issetModule('currency')) {
 //            echo '<div class="padding-bottom10"><small>' . tt('Price will be saved (converted) in the default currency on the site', 'apartments') . ' - ' . Currency::getDefaultCurrencyModel()->name . '</small></div>';
 //        }
 
-        if ($model->isPriceFromTo()) {
-            echo tc('price_from') . ' ' . $form->textField($model, 'price', array('class' => 'width100 noblock'));
-            echo ' ' .tc('price_to') . ' ' . $form->textField($model, 'price_to', array('class' => 'width100'));
+        if (true) {//$model->isPriceFromTo()
+            echo tc('Low Season') . ' ' . $form->textField($model, 'price', array('class' => 'width100 noblock'));
+            echo ' ' .tc('High Season') . ' ' . $form->textField($model, 'price_high', array('class' => 'width100'));
+            echo ' ' .tc('Peak Season') . ' ' . $form->textField($model, 'price_to', array('class' => 'width100'));
         } else {
             echo $form->textField($model, 'price', array('class' => 'width100'));
         }
@@ -141,11 +142,11 @@ if ($model->canShowInForm('address')) {
         }
 
         if($model->type == Apartment::TYPE_RENT){
-            $priceArray = Apartment::getPriceArray($model->type);
-            if(!in_array($model->price_type, array_keys($priceArray))){
+//            $priceArray = Apartment::getPriceArray($model->type);
+//            if(!in_array($model->price_type, array_keys($priceArray))){
                 $model->price_type = Apartment::PRICE_PER_MONTH;
-            }
-            echo '&nbsp;'.$form->dropDownList($model, 'price_type', Apartment::getPriceArray($model->type), array('class' => 'width150'));
+//            }
+            echo '/' . tc('day'); //.$form->dropDownList($model, 'price_type', Apartment::getPriceArray($model->type), array('class' => 'width150'));
         }
         ?>
     </div>
@@ -166,6 +167,33 @@ if ($model->canShowInForm('description')) {
     $this->widget('application.modules.lang.components.langFieldWidget', array(
         'model' => $model,
         'field' => 'description',
+        'type' => 'text'
+    ));
+    echo '<div class="clear">&nbsp;</div>';
+}
+
+if ($model->canShowInForm('pool')) {
+    $this->widget('application.modules.lang.components.langFieldWidget', array(
+        'model' => $model,
+        'field' => 'pool',
+        'type' => 'text'
+    ));
+    echo '<div class="clear">&nbsp;</div>';
+}
+
+if ($model->canShowInForm('facilities')) {
+    $this->widget('application.modules.lang.components.langFieldWidget', array(
+        'model' => $model,
+        'field' => 'facilities',
+        'type' => 'text'
+    ));
+    echo '<div class="clear">&nbsp;</div>';
+}
+
+if ($model->canShowInForm('villascomplex')) {
+    $this->widget('application.modules.lang.components.langFieldWidget', array(
+        'model' => $model,
+        'field' => 'villascomplex',
         'type' => 'text'
     ));
     echo '<div class="clear">&nbsp;</div>';

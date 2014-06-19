@@ -423,8 +423,10 @@ class YiiBase
 						}
 					}
 				}
-				else
+				else { //TODO_BP : [framework]
+                                    if($className!='Currency')
 					include($className.'.php');
+                                }
 			}
 			else  // class name with namespace in PHP 5.3
 			{

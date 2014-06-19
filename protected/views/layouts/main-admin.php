@@ -58,7 +58,7 @@
 	} else {
 		$rightItems = array(
 			array('label' => tc('Language'), 'url' => '#', 'items' => Lang::getAdminMenuLangs()),
-			array('label' => tc('Currency'), 'url' => '#', 'items' => Currency::getActiveCurrencyArray(4)),
+		//	array('label' => tc('Currency'), 'url' => '#', 'items' => Currency::getActiveCurrencyArray(4)),
 			array('label' => tc('Log out'), 'url' => $baseUrl . '/site/logout'),
 		);
 	}
@@ -120,7 +120,7 @@
             <div class="well sidebar-nav">          
                 		<?php
                    
-				if(isFree()){
+				if(true){
                       
 					$this->widget('bootstrap.widgets.TbMenu', array(
 						'type' => 'list',
@@ -128,16 +128,16 @@
 						'items' => array(
 							array('label' => tc('Listings')),
 							array('label' => tc('Listings') . $bageListings, 'icon' => 'icon-list-alt', 'url' => $baseUrl . '/apartments/backend/main/admin', 'active' => isActive('apartments')),
-                                                    //TODO_BP : new villa
+                                                    //TODO_BP : [backend main nav] new villa
                                                     //tc('List your property') .
                                                     // Holiday villas
                                                     //при смене типа в форме нет изменений в левой навигации
                                                     array('label' => tc('Add')),//'active' => isActive('apartments.create')
                                               
                                                         array('label' => '<b>' . tc('Holiday villas') . '</b>', 'icon' => 'icon-plus-sign', 'url' => $baseUrl . '/apartments/backend/main/create?type=1', 'active' => isset($_GET['type'])&&$_GET['type']==1?$_GET['type']:'0'),//isActive('apartments.create')
-                                                        array('label' => '<b>' . tc('Long-term villas') . '</b>', 'icon' => 'icon-plus-sign',  'url' => $baseUrl . '/apartments/backend/main/create?type=2', 'active' => isset($_GET['type'])&&$_GET['type']==2?$_GET['type']:'0'),
-                                                        array('label' => '<b>' . tc('Land for sale') . '</b>', 'icon' => 'icon-plus-sign', 'url' => $baseUrl . '/apartments/backend/main/create?type=3', 'active' => isset($_GET['type'])&&$_GET['type']==3?$_GET['type']:'0'),
-                                                        array('label' => '<b>' . tc('Villas for sale') . '</b>','icon' => 'icon-plus-sign', 'url' => $baseUrl . '/apartments/backend/main/create?type=4', 'active' => isset($_GET['type'])&&$_GET['type']==4?$_GET['type']:'0'),
+                                                        array('label' => '<b>' . tc('Long-term villas') . '</b>', 'icon' => 'icon-plus-sign',  'url' => NULL, 'active' => isset($_GET['type'])&&$_GET['type']==2?$_GET['type']:'0'),
+                                                        array('label' => '<b>' . tc('Land for sale') . '</b>', 'icon' => 'icon-plus-sign', 'url' => NULL, 'active' => isset($_GET['type'])&&$_GET['type']==3?$_GET['type']:'0'),
+                                                        array('label' => '<b>' . tc('Villas for sale') . '</b>','icon' => 'icon-plus-sign', 'url' => NULL, 'active' => isset($_GET['type'])&&$_GET['type']==4?$_GET['type']:'0'),
 							array('label' => tt('Activity')),
                                                         array('label' => tc('Comments') . $bageComments, 'icon' => 'icon-list-alt', 'url' => $baseUrl . '/comments/backend/main/admin', 'active' => isActive('comments')),
 							array('label' => tc('Complains') . $bageComplain, 'icon' => 'icon-list-alt', 'url' => $baseUrl . '/apartmentsComplain/backend/main/admin', 'active' => isActive('apartmentsComplain'), 'visible' => issetModule('apartmentsComplain')),
@@ -161,8 +161,8 @@
 							array('label' => tc('Categories of references'), 'icon' => 'icon-asterisk', 'url' => $baseUrl . '/referencecategories/backend/main/admin', 'active' => isActive('referencecategories')),
 							array('label' => tc('Values of references'), 'icon' => 'icon-asterisk', 'url' => $baseUrl . '/referencevalues/backend/main/admin', 'active' => isActive('referencevalues')),
 							array('label' => tc('Reference "View:"'), 'icon' => 'icon-asterisk', 'url' => $baseUrl . '/windowto/backend/main/admin', 'active' => isActive('windowto')),
-							array('label' => tc('Reference "Check-in"'), 'icon' => 'icon-asterisk', 'url' => $baseUrl . '/timesin/backend/main/admin', 'active' => isActive('timesin')),
-							array('label' => tc('Reference "Check-out"'), 'icon' => 'icon-asterisk', 'url' => $baseUrl . '/timesout/backend/main/admin', 'active' => isActive('timesout')),
+//							array('label' => tc('Reference "Check-in"'), 'icon' => 'icon-asterisk', 'url' => $baseUrl . '/timesin/backend/main/admin', 'active' => isActive('timesin')),
+//							array('label' => tc('Reference "Check-out"'), 'icon' => 'icon-asterisk', 'url' => $baseUrl . '/timesout/backend/main/admin', 'active' => isActive('timesout')),
 							array('label' => tc('Reference "Property types"'), 'icon' => 'icon-asterisk', 'url' => $baseUrl . '/apartmentObjType/backend/main/admin', 'active' => isActive('apartmentObjType')),
 							array('label' => tc('Reference "City/Cities"'), 'icon' => 'icon-asterisk', 'url' => $baseUrl . '/apartmentCity/backend/main/admin', 'active' => isActive('apartmentCity')),
 
@@ -184,8 +184,8 @@
 							array('label' => tc('Languages and currency')),
 							array('label' => tc('Translations'), 'icon' => 'icon-wrench', 'url' => $baseUrl . '/translateMessage/backend/main/admin', 'active' => isActive('translateMessage')),
 
-							array('label' => tc('Other')),
-							array('label' => tc('News about Open Real Estate CMS'), 'icon' => 'icon-home', 'url' => $baseUrl . '/news/backend/main/product', 'active' => isActive('news.product')),
+//							array('label' => tc('Other')),
+//							array('label' => tc('News about Open Real Estate CMS'), 'icon' => 'icon-home', 'url' => $baseUrl . '/news/backend/main/product', 'active' => isActive('news.product')),
 						),
 					));
 				} else {

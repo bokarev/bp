@@ -28,6 +28,8 @@ class MainController extends ModuleAdminController{
 
 		if(isset($_POST[$this->modelName])){
 			$model->attributes=$_POST[$this->modelName];
+                        
+                           
 			if($model->validate()){
 				$model->setPassword();
 				$model->save(false);

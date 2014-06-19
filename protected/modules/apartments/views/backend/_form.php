@@ -37,12 +37,12 @@ Yii::app()->clientScript->registerScript('redirectType', "
 		'htmlOptions'=> $htmlOptions,
 	));
         //TODO_BP : form title - продаю, сдаю ...
-        if($model->type==1) echo '<h3>' . tc('Holiday villas') . '</h3>';
-        if($model->type==2) echo '<h3>' . tc('Long-term villas') . '</h3>';
-        if($model->type==3) echo '<h3>' . tc('Land for sale') . '</h3>';
-        if($model->type==4) echo '<h3>' . tc('Villas for sale') . '</h3>';
-						
-       // print_r($model);
+//        if($model->type==1) echo '<h3>' . tc('Holiday villas') . '</h3>';
+//        if($model->type==2) echo '<h3>' . tc('Long-term villas') . '</h3>';
+//        if($model->type==3) echo '<h3>' . tc('Land for sale') . '</h3>';
+//        if($model->type==4) echo '<h3>' . tc('Villas for sale') . '</h3>';
+ 
+       echo '<h3>' . Apartment::getNameByType($model->type) . '</h3>';
 	?>
 
 	<?php if(!$model->isNewRecord){ ?>
@@ -139,7 +139,20 @@ Yii::app()->clientScript->registerScript('redirectType', "
 			?>
 		</div>
 		<br/>
-		<?php } ?>
+                
+                
+		<?php  
+                //TODO_BP : [backend] map_description
+                if ($model->canShowInForm('map_description')) {
+                    $this->widget('application.modules.lang.components.langFieldWidget', array(
+                    'model' => $model,
+                    'field' => 'map_description',
+                    'type' => 'text'
+                    ));
+                }
+                 echo '<div class="clear">&nbsp;</div>';
+                } 
+                ?>
 	</div>
 
 	<?php if($model->type != Apartment::TYPE_BUY && $model->type != Apartment::TYPE_RENTING) : ?>
@@ -415,17 +428,20 @@ if (issetModule('seo') && !$model->isNewRecord && $model->active != Apartment::S
 			})
 		}
 	', CClientScript::POS_END);
-
+        //TODO_BP : [backend special_offer] registerScript 'show-special'
 	Yii::app()->clientScript->registerScript('show-special', '
 		//special-calendar
 		if(!$("#Apartment_is_special_offer").is(":checked")){
 			$(".special-calendar").hide();
+                        $(".special_offer").hide(); 
 		}
 		$("#Apartment_is_special_offer").bind("change", function(){
 			if($(this).is(":checked")){
 				$(".special-calendar").show();
+                                $(".special_offer").show();                              
 			} else {
 				$(".special-calendar").hide();
+                                $(".special_offer").hide(); 
 			}
 		});
 

@@ -69,8 +69,19 @@
 	if (issetModule('bookingcalendar') && $model->active != Apartment::STATUS_DRAFT) {
 		$this->renderPartial('//../modules/bookingcalendar/views/_form', array('apartment' => $model, 'element' => $element));
 	}
+        // TODO_BP : [backend] div special offer 
 	?>
-
+    <div class="special_offer">
+        <?php 
+    if ($model->canShowInForm('note')){
+        echo $form->label($model, 'note');
+        echo Apartment::getTip('note');
+        echo $form->textArea($model, 'note', array(
+            'class' => 'width500',
+        ));
+    }
+        ?>
+    </div>
 <?php if($model->canShowInForm('num_of_rooms')){ ?>
 	<div class="rowold">
 		<?php echo $form->labelEx($model, 'num_of_rooms'); ?>
@@ -84,8 +95,24 @@
 	</div>
 	<div class="clear5"></div>
 <?php } ?>
+        
+<?php if($model->canShowInForm('num_of_pools')){ ?>
+	<div class="rowold">
+		<?php echo $form->labelEx($model, 'num_of_pools'); ?>
+        <?php echo Apartment::getTip('num_of_pools');?>
+		<?php echo $form->dropDownList($model, 'num_of_pools',
+		array_merge(
+			array(0 => ''),
+			range(1, param('moduleApartments_maxRooms', 8))
+		), array('class' => 'width50')); ?>
+		<?php echo $form->error($model, 'num_of_pools'); ?>
+	</div>
+	<div class="clear5"></div>
+<?php } ?>
 
-    <?php if($model->canShowInForm('floor_all')){ ?>
+    <?php 
+    //TODO_BP : [backend remove floor_all] $model->canShowInForm('floor_all')
+    if(false){ ?>
 	<div class="rowold">
 		<?php echo $form->labelEx($model, 'floor', array('class' => 'noblock')); ?> /
 		<?php echo $form->labelEx($model, 'floor_total', array('class' => 'noblock')); ?><br/>
@@ -207,14 +234,6 @@
         echo $form->label($model, 'phone');
         echo Apartment::getTip('phone');
         echo $form->textField($model, 'phone');
-    }
-
-    if ($model->canShowInForm('note')){
-        echo $form->label($model, 'note');
-        echo Apartment::getTip('note');
-        echo $form->textArea($model, 'note', array(
-            'class' => 'width500',
-        ));
     }
 
     if(issetModule('formeditor')){

@@ -199,6 +199,22 @@ function logs($mVal) {
 	fclose($file);
 }
 
+function my_debug($mVal) {
+    //TODO_BP : [debug] my_debug  
+	$file = fopen(ROOT_PATH . '/my_data.txt', 'a+');
+        if(is_array($mVal)){
+            $str = '';
+            foreach ($mVal as $key => $value) {
+               $str .= $key . ' -> ' . $value . '\n\r';
+            }
+        }else{
+            $str = $mVal;
+        }
+	$str = date("d.m.y H:i ") . '   -   ' . $str . "\n";
+	fwrite($file, $str);
+	fclose($file);
+}
+
 function throw404() {
 	throw new CHttpException(404, 'The requested page does not exist.');
 }

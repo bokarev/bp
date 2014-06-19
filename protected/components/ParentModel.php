@@ -28,11 +28,11 @@ class ParentModel extends CActiveRecord
 
     public function getI18nFieldSafe(){
         $i18nFields = array_keys($this->i18nFields());
-		if(isFree()){
-			$activeLangs = array(Yii::app()->language);
-		} else {
+//		if(isFree()){
+//			$activeLangs = array(Yii::app()->language);
+//		} else {
         	$activeLangs = Lang::getActiveLangs();
-		}
+//		}
         $i18nSafeArr = array();
         foreach($activeLangs as $lang){
             foreach($i18nFields as $field){

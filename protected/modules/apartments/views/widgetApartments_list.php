@@ -70,6 +70,7 @@ if(!Yii::app()->request->isAjaxRequest){
 <div class="title_list">
     <h2>
 		<?php
+                // TODO_BP : [frontend villas list first page]
 		if ($this->widgetTitle !== null) {
 			echo $this->widgetTitle . (isset($count) && $count ? ' (' . $count . ')' : '');
 		} else {

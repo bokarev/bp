@@ -451,6 +451,7 @@ class MainController extends CController {
 				}
 			}
 		}
+            //    $app->setLanguage('ru');
 	}
 
 	public function setLangCookieInstall($lang = 'en'){

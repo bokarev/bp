@@ -277,6 +277,10 @@ div.big-special-offer {
 div.big-special-offer h4 {
     padding: 13px 0 0 50px !important;
 }
+.footer{
+    visibility: hidden;
+    
+}
 div.big-special-offer p {
     margin-bottom: 10px;
     padding-bottom: 10px;
