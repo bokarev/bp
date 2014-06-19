@@ -130,7 +130,7 @@ foreach ($apartments as $item) {
 					if (in_array($item->id, Yii::app()->controller->apInComparison))
 						$inComparisonList = true;
 					?>
-<!--					<div class="row compare-check-control" id="compare_check_control_<?php echo $item->id; ?>">
+					<div class="row compare-check-control" id="compare_check_control_<?php echo $item->id; ?>">
 						<?php
 						$checkedControl = '';
 
@@ -142,7 +142,7 @@ foreach ($apartments as $item) {
 						<a href="<?php echo ($inComparisonList) ? Yii::app()->createUrl('comparisonList/main/index') : 'javascript:void(0);';?>" data-rel-compare="<?php echo ($inComparisonList) ? 'true' : 'false';?>" id="compare_label<?php echo $item->id; ?>" class="compare-label">
 							<?php echo ($inComparisonList) ? tt('In the comparison list', 'comparisonList') : tt('Add to a comparison list ', 'comparisonList');?>
 						</a>
-					</div>-->
+					</div>
 			<?php endif;?>
 		</div>
 	</div>
