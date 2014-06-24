@@ -1441,7 +1441,13 @@ class Apartment extends ParentModel {
 			));
 		}
 	}
-
+        
+        public function setTitleCopy(){
+            $this->active = self::STATUS_MODERATION;
+            $this->title_en = $this->title_en . ' copy';
+            $this->title_ru = $this->title_ru . ' copy';
+        }  
+        
     public function setDefaultType(){
         //TODO_BP : for tabs setDefaultType
         if (param('useTypeRent', 1)) {

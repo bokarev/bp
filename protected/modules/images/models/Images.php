@@ -66,7 +66,7 @@ class Images extends ParentModel {
 
 		return parent::beforeSave();
 	}
-
+        
 	public function afterDelete(){
 		if($this->is_main){
 			$sql = 'UPDATE {{images}} SET is_main=1 WHERE id_object=:id LIMIT 1';

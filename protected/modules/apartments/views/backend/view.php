@@ -6,7 +6,8 @@ $this->breadcrumbs=array(
 
 $this->menu = array(
 	array('label'=>tt('Manage apartments'), 'url'=>array('admin')),
-	array('label'=>tt('Add apartment'), 'url'=>array('create')),
+	array('label'=>tt('Dublicate apartment'), 'url'=>array('dublicate', 'id' => $model->id)),
+        //TODO_BP : [backend] dublicate apartement
 	array('label'=>tt('Update apartment'), 'url'=>array('update', 'id' => $model->id)),
 	array('label'=>tt('Delete apartment'), 'url'=>'#',
 		'linkOptions'=>array(

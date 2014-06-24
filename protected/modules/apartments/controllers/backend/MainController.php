@@ -197,6 +197,17 @@ class MainController extends ModuleAdminController {
      * This method is called before a test is executed.
      * @todo Create
      */
+    	public function actionDublicate(){
+            // TODO_BP : [backend] dublicate object
+            if(isset($_GET['id'])){
+                $model = new $this->modelName;
+                $apartment = $this->loadModel($_GET['id']);
+                $model->attributes = $apartment->attributes;
+                $model->setTitleCopy();
+                $model->save();
+            }
+            $this->redirect(array('admin'));
+	}
 	public function actionCreate(){
 		$model = new $this->modelName;
                 $model->active = Apartment::STATUS_DRAFT;
