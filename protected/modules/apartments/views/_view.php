@@ -104,12 +104,17 @@
 			</div>
 
 			<p class="cost padding-bottom10 ap-descr">
-				<?php if ($data->is_price_poa)
+				<?php 
+                                if ($data->is_price_poa)
 						echo tt('is_price_poa', 'apartments');
-					else {  echo tt('Price from') . ': ' . '<br />';
+					elseif($data->type == 1) {  echo tt('Price from') . ': ' . '<br />';
 						echo tc('Low Season') . ': ' . $data->price  . ' $/' . tc('day')  . '<br />';
                                                 echo tc('High Season') . ': ' . $data->price_high  . ' $/' . tc('day')  . '<br />';
                                                 echo tc('Peak Season') . ': ' . $data->price_to  . ' $/' . tc('day')  . '<br />';
+                                        }elseif($data->type == 2) {
+                                            echo $data->price  . ' $/' . tt('per year') ;
+                                            //TODO_BP : [frontend type2] price
+
                                         }
 				?>
 			</p>

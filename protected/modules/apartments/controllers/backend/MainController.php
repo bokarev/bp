@@ -159,7 +159,9 @@ class MainController extends ModuleAdminController {
 				$this->_model->save(false);
 			} elseif($this->_model->validate()) {
 				$this->_model->save(false);
-				$this->redirect(array('view','id'=>$this->_model->id));
+                                $this->redirect(array('update', 'id' => $this->_model->id));
+	//TODO_BP : [backend redirect]			,'type' => $model->type
+        //$this->redirect(array('view','id'=>$this->_model->id));
 			}
 		}
 

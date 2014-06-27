@@ -118,15 +118,14 @@ if ($model->canShowInForm('address')) {
     <div id="price_fields">
         <?php
         echo CHtml::hiddenField('is_update', 0);
-// TODO_BP : [backend] price_fields $model->isPriceFromTo()
-//        if (issetModule('currency')) {
-//            echo '<div class="padding-bottom10"><small>' . tt('Price will be saved (converted) in the default currency on the site', 'apartments') . ' - ' . Currency::getDefaultCurrencyModel()->name . '</small></div>';
-//        }
-
-        if (true) {//$model->isPriceFromTo()
+        
+//TODO_BP : [backend type2] price
+        if ($model->type == 1) {//$model->isPriceFromTo()
             echo tc('Low Season') . ' ' . $form->textField($model, 'price', array('class' => 'width100 noblock'));
             echo ' ' .tc('High Season') . ' ' . $form->textField($model, 'price_high', array('class' => 'width100'));
             echo ' ' .tc('Peak Season') . ' ' . $form->textField($model, 'price_to', array('class' => 'width100'));
+        } elseif($model->type == 2) {
+            echo tt('per year') . ' ' . $form->textField($model, 'price', array('class' => 'width100 noblock'));
         } else {
             echo $form->textField($model, 'price', array('class' => 'width100'));
         }
