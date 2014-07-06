@@ -17,6 +17,15 @@
     	));
     ?>
 	<div class="clear"></div>
+    
+    <?php
+    $this->widget('application.modules.lang.components.langFieldWidget', array(
+    		'model' => $model,
+    		'field' => 'desc',
+            'type' => 'text'
+    	));
+    ?>
+	<div class="clear"></div>
 
     <div class="rowold buttons">
            <?php $this->widget('bootstrap.widgets.TbButton',

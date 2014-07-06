@@ -174,7 +174,8 @@ class CActiveDataProvider extends CDataProvider
 		$criteria=clone $this->getCriteria();
 
 		if(($pagination=$this->getPagination())!==false)
-		{
+		{       //TODO_BP : [backend] pagination
+                        $pagination->pageSize = 500;
 			$pagination->setItemCount($this->getTotalItemCount());
 			$pagination->applyLimit($criteria);
 		}

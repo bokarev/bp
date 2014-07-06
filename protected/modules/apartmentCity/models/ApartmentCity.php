@@ -34,6 +34,7 @@ class ApartmentCity extends ParentModel
 			array('name', 'i18nRequired'),
 			array('sorter', 'numerical', 'integerOnly'=>true),
 			array('name', 'i18nLength', 'max'=>255),
+                        array('desc', 'i18nLength', 'max'=>1000),
 			array('id, sorter, date_updated', 'safe', 'on'=>'search'),
 			array($this->getI18nFieldSafe(), 'safe'),
 		);
@@ -42,6 +43,7 @@ class ApartmentCity extends ParentModel
     public function i18nFields(){
         return array(
             'name' => 'varchar(255) not null',
+            'desc' => 'varchar(255) not null',
         );
     }
 
@@ -53,10 +55,17 @@ class ApartmentCity extends ParentModel
 		return array(
 			'id' => 'ID',
 			'name' => tt('Name'),
+                        'desc' => tc('Desc'),
 			'sorter' => 'Sorter',
 			'date_updated' => 'Date Updated',
 		);
 	}
+        
+    public function getDesc(){
+        return $this->getStrByLang('desc');
+    }
+
+
 
     public function search(){
         $criteria=new CDbCriteria;

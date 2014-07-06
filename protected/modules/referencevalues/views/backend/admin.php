@@ -13,7 +13,6 @@ $this->adminTitle = tt('Manage reference values');
 $this->widget('CustomGridView', array(
 	'id'=>'reference-values-grid',
 	'dataProvider'=>$model->search(),
-	'filter'=>$model,
 	'afterAjaxUpdate' => 'function(){$("a[rel=\'tooltip\']").tooltip(); $("div.tooltip-arrow").remove(); $("div.tooltip-inner").remove();}',
 	'columns'=>array(
 		array(
