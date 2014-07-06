@@ -135,9 +135,9 @@
                                                     array('label' => tc('Add')),//'active' => isActive('apartments.create')
                                               
                                                         array('label' => '<b>' . tc('Holiday villas') . '</b>', 'icon' => 'icon-plus-sign', 'url' => $baseUrl . '/apartments/backend/main/create?type=1', 'active' => isset($_GET['type'])&&$_GET['type']==1?$_GET['type']:'0'),//isActive('apartments.create')
-                                                        array('label' => '<b>' . tc('Long-term villas') . '</b>', 'icon' => 'icon-plus-sign',  'url' => $baseUrl . '/apartments/backend/main/create?type=2', 'active' => isset($_GET['type'])&&$_GET['type']==2?$_GET['type']:'0'),
-                                                        array('label' => '<b>' . tc('Land for sale') . '</b>', 'icon' => 'icon-plus-sign', 'url' => $baseUrl . '/apartments/backend/main/create?type=3', 'active' => isset($_GET['type'])&&$_GET['type']==3?$_GET['type']:'0'),
-                                                        array('label' => '<b>' . tc('Villas for sale') . '</b>','icon' => 'icon-plus-sign', 'url' => $baseUrl . '/apartments/backend/main/create?type=4', 'active' => isset($_GET['type'])&&$_GET['type']==4?$_GET['type']:'0'),
+                                                        array('label' => '<b>' . tc('Long-term villas') . '</b>', 'icon' => 'icon-plus-sign',  'url' => NULL, 'active' => isset($_GET['type'])&&$_GET['type']==2?$_GET['type']:'0'),
+                                                        array('label' => '<b>' . tc('Land for sale') . '</b>', 'icon' => 'icon-plus-sign', 'url' => NULL, 'active' => isset($_GET['type'])&&$_GET['type']==3?$_GET['type']:'0'),
+                                                        array('label' => '<b>' . tc('Villas for sale') . '</b>','icon' => 'icon-plus-sign', 'url' => NULL, 'active' => isset($_GET['type'])&&$_GET['type']==4?$_GET['type']:'0'),
 							array('label' => tt('Activity')),
                                                         array('label' => tc('Comments') . $bageComments, 'icon' => 'icon-list-alt', 'url' => $baseUrl . '/comments/backend/main/admin', 'active' => isActive('comments')),
 							array('label' => tc('Complains') . $bageComplain, 'icon' => 'icon-list-alt', 'url' => $baseUrl . '/apartmentsComplain/backend/main/admin', 'active' => isActive('apartmentsComplain'), 'visible' => issetModule('apartmentsComplain')),
