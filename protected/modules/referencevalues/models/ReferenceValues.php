@@ -89,7 +89,7 @@ class ReferenceValues extends ParentModel{
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 			'pagination'=>array(
-				'pageSize'=>param('adminPaginationPageSize', 1020),
+				'pageSize'=>param('adminPaginationPageSize', 20),
 			),
 		));
 	}
